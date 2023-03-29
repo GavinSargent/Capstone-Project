@@ -11,14 +11,14 @@ const {SERVER_PORT} = process.env
 const {seed} = require('./seed.js')
 const{
     getMyQuotes
-
 } = require('./controller')
 
 // Dev
 app.post(`/seed`, seed)
 
 // User
-app.get(`http://localhost:${SERVER_PORT}/quotes`, getMyQuotes)
+app.get(`/quotes/:quotePhone`, getMyQuotes)
+
 
 
 

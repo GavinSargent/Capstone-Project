@@ -14,10 +14,16 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 module.exports = {
     getMyQuotes: (req, res) => {
+        const {quotePhone} = req.param
+        console.log("THIS IS THE PHONE ", quotePhone)
         sequelize.query(`
             SELECT quotes.quote_id, users.phone, quotes.date, quotes.time, quotes.service
             FROM quotes
             JOIN users ON users.user_id = quotes.user_id
-        `)
-    }
+            WHERE users.phone = '${quotePhone}' 
+        `).then(dbRes => {res.status(200).send(dbRes)
+        console.log(dbRes)})
+        .catch(err => console.log("something went wrong with the database", err))
+    },
+
 }

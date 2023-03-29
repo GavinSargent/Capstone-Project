@@ -18,11 +18,13 @@
         <form id="view-quotes">
             <label for="phone">Enter your phone number to view your quotes</label>
             <input type="tel" id="view-quotes-phone" name="view-quotes-phone" placeholder="Phone Number"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                 required>
-                <small>Format: 123-456-7890</small>
+                <small>Format: 1234567890 (no spaces or dashes)</small>
             <button id="view-quotes-btn" name="view-quotes-btn">View my quotes</button>
         </form>
+
+        <div id="my-quotes" name="my-quotes"></div>
     </section>
 
     <section>
@@ -38,9 +40,9 @@
             <div id="phone-input">
                 <label for="phone">Phone Number*</label>
                 <input type="tel" id="phone" name="phone" placeholder="Phone Number"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                 required>
-                <small>Format: 123-456-7890</small>
+                <small>Format: 1234567890 (no spaces or dashes)</small>
             </div>
 
             <div>

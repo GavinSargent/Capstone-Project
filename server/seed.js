@@ -15,8 +15,8 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 module.exports = {
     seed: (req, res) => {
         sequelize.query(`
-        DROP TABLE IF EXISTS users
-        DROP TABLE IF EXISTS quotes
+        DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS quotes;
 
         CREATE TABLE users(
             user_id SERIAL PRIMARY KEY,
@@ -41,6 +41,7 @@ module.exports = {
 
         INSERT INTO quotes (user_id, service, address, city, state, notes)
         VALUES (1, 'Sprinklers', '1234 S 4321 W', 'Los Angeles', 'CA', null);
+
         `).then(()=> {
             console.log('Database seeded')
             res.sendStatus(200)

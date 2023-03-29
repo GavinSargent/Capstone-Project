@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize")
-require("dotenv").config()
+const Sequelize = require("sequelize");
+require("dotenv").config();
 
 const {CONNECTION_STRING} = process.env
 
@@ -30,6 +30,8 @@ module.exports = {
             quote_id SERIAL PRIMARY KEY,
             user_id INT REFERENCES users(user_id) NOT NULL,
             service VARCHAR(30) NOT NULL,
+            date VARCHAR (15) NOT NULL,
+            time VARCHAR (10) NOT NULL,
             address VARCHAR (100) NOT NULL,
             city VARCHAR (30) NOT NULL,
             state VARCHAR (2) NOT NULL,

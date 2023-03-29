@@ -1,6 +1,6 @@
+require('dotenv').config()
 const express = require("express")
 const cors = require("cors")
-require('dotenv').config()
 
 const app = express()
 
@@ -15,7 +15,7 @@ const{
 } = require('./controller')
 
 // Dev
-app.post(`http://localhost:${SERVER_PORT}/seed`, seed)
+app.post(`/seed`, seed)
 
 // User
 app.get(`http://localhost:${SERVER_PORT}/quotes`, getMyQuotes)

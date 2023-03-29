@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
-require("dotenv").config();
+const Sequelize = require('sequelize');
+require('dotenv').config();
 
-const {CONNECTION_STRING} = process.env
+const{ CONNECTION_STRING } = process.env;
 
 const sequelize = new Sequelize(CONNECTION_STRING, {
     dialect: 'postgres',
@@ -41,12 +41,12 @@ module.exports = {
         INSERT INTO users (first_name, last_name, phone, email)
         VALUES ('Tony', 'Stark', '111-123-1234', 'tstark@stark.com');
 
-        INSERT INTO quotes (user_id, service, address, city, state, notes)
-        VALUES (1, 'Sprinklers', '1234 S 4321 W', 'Los Angeles', 'CA', null);
+        INSERT INTO quotes (user_id, service, date, time, address, city, state, notes)
+        VALUES (1, 'Sprinklers', '1-1-2011', '14:00', '1234 S 4321 W', 'Los Angeles', 'CA', null);
 
-        `).then(()=> {
+        `).then(() => {
             console.log('Database seeded')
             res.sendStatus(200)
-        }).catch(err => console.log('error seeding database'))
+        }).catch(err => console.log('error seeding database', err))
     }
 }

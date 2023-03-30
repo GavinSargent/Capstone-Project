@@ -12,7 +12,7 @@ const {seed} = require('./seed.js')
 const{
     getMyQuotes,
     scheduleQuote,
-    
+
 } = require('./controller')
 
 // Dev
@@ -21,7 +21,6 @@ app.post(`/seed`, seed)
 // User
 app.get(`/quotes/:quotePhone`, getMyQuotes)
 app.post('/schedule', scheduleQuote)
-
 
 
 

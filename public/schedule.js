@@ -12,11 +12,11 @@ let emailInput = document.getElementById("email")
 let dateInput = document.getElementById("date")
 let timeInput = document.getElementById("time")
 let addressInput = document.getElementById("address")
-let cityInput = document.getElementById("service-type")
-let stateInput = document.getElementById("city")
-let serviceInput = document.getElementById("state")
+let cityInput = document.getElementById("city")
+let stateInput = document.getElementById("state")
+let serviceInput = document.getElementById("service-type")
 let notesInput = document.getElementById("notes")
-// let scheduleForm = document.getElementById()
+let goodPost = document.getElementById('good-post')
 
 
 
@@ -68,7 +68,9 @@ viewQuotesForm.addEventListener('submit', (event) => {
 
 scheduleForm.addEventListener("submit", (event) => {
     event.preventDefault()
-
+    if(notesInput.length === 0){
+        notesInput.value = "none"
+    }
     let quoteBod = {
         firstName: firstNameInput.value,
         lastName: lastNameInput.value,
@@ -82,8 +84,19 @@ scheduleForm.addEventListener("submit", (event) => {
         state: stateInput.value,
         notes: notesInput.value
     }
+
     
+
+
+    console.log(quoteBod)
+
     axios.post('http://localhost:6500/schedule', quoteBod)
-    .then(res => console.log("Quote succesfully submitted"))
+    .then(res => {
+        let postMsg = document.createElement('h3')
+
+        postMsg.innerHTML = "Quote successfully submitted!"
+
+        goodPost.appendChild(postMsg)
+    })
     .catch(err => console.log("something went wrong with the post", err))
 })

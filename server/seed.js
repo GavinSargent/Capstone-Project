@@ -13,6 +13,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 });
 
 module.exports = {
+
     seed: (req, res) => {
         sequelize.query(`
         DROP TABLE IF EXISTS users;

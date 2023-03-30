@@ -31,13 +31,15 @@ module.exports = {
             email, service, date, time, 
             address, city, state, notes} = req.body
 
+        console.log(req.body)
+
         sequelize.query(`
             WITH newuser AS (INSERT INTO users (first_name, last_name, phone, email)
             VALUES (:first_name, :last_name, :phone, :email)
             RETURNING user_id)
 
-            INSERT INTO quotes (user_id, service, date, time, address, city, state, notes)
-            SELECT user_id, :service, :date, :time, :address, :city, :state, :notes FROM newuser; 
+            INSERT INTO quotes ( service, date, time, address, city, state, notes, user_id)
+            SELECT  :service, :date, :time, :address, :city, :state, :notes, user_id FROM newuser; 
         `,
             {
                 replacements: {

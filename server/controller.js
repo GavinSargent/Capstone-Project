@@ -63,4 +63,23 @@ module.exports = {
         .catch(err => console.log("something went wrong with the DB", err))
     },
 
+    deleteQuote: (req,res) => {
+        const {quoteId} = req.params
+
+        sequelize.query(`
+            DELETE FROM quotes
+            WHERE quote_id = :quoteId
+        `,
+            {
+                replacements: {
+                    quoteId: quoteId
+                }
+            }
+        
+        )
+        .then(()=> res.sendStatus(200))
+        .catch(err => console.log("something went wrong with the DB", err))
+
+    }
+
 }

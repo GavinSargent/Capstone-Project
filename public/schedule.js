@@ -18,6 +18,11 @@ let serviceInput = document.getElementById("service-type")
 let notesInput = document.getElementById("notes")
 let goodPost = document.getElementById('good-post')
 
+//Delete Request
+let deleteQuotesForm = document.getElementById("delete-quotes-form")
+let deleteQuotesDiv = document.getElementById("delete-my-quotes-container")
+let deleteQuotesPhoneInput = document.getElementById("delete-quotes-phone")
+
 
 
 viewQuotesForm.addEventListener('submit', (event) => {
@@ -45,13 +50,24 @@ viewQuotesForm.addEventListener('submit', (event) => {
 
                 let individualQuote = document.createElement('div')
                 individualQuote.classList.add('individualQuote')
+                individualQuote.classList.add(quoteObj.quoteId)
                 individualQuote.setAttribute("id", quoteObj.quoteId)
-
+                
+                let deleteBtn = document.createElement('button')
+                deleteBtn.setAttribute("id", "delete-button " + quoteObj.quoteId)
+                
                 let quotePhone = document.createElement('p')
                 let quoteDate = document.createElement('p')
                 let quoteTime = document.createElement('p')
                 let quoteService = document.createElement('p')
 
+                deleteBtn.classList.add(quoteObj.quoteId)
+                // quotePhone.classList.add(quoteObj.quoteId)
+                // quoteDate.classList.add(quoteObj.quoteId)
+                // quoteTime.classList.add(quoteObj.quoteId)
+                // quoteService.classList.add(quoteObj.quoteId)
+
+                deleteBtn.innerHTML = "Cancel Quote"
                 quotePhone.innerHTML = "Phone: " + quoteObj.phone
                 quoteDate.innerHTML = "Date: " + quoteObj.date
                 quoteTime.innerHTML = "Time: " + quoteObj.time
@@ -62,9 +78,27 @@ viewQuotesForm.addEventListener('submit', (event) => {
                 individualQuote.appendChild(quoteDate)
                 individualQuote.appendChild(quoteTime)
                 individualQuote.appendChild(quoteService)
+                individualQuote.appendChild(deleteBtn)
+
+                deleteBtn.addEventListener('click', (event)=>{  
+                    let targetId = event.target.classList[0]
+
+                    event.target.parentElement.remove()
+
+                    axios.delete('http://localhost:6500/quotes/delete/' + targetId)
+                    .then(() => {
+                        let postMsg = document.createElement('h3')
+
+                        postMsg.innerHTML = "Quote successfully cancelled!"
+
+                        goodPost.appendChild(postMsg)
+                    })
+                    .catch(err => console.log("Something happened on the backend", err))
+                })
             }                   
     }).catch((err)=> console.log(`something bad happened with the backend`, err))
 })
+
 
 scheduleForm.addEventListener("submit", (event) => {
     event.preventDefault()
@@ -85,10 +119,7 @@ scheduleForm.addEventListener("submit", (event) => {
         notes: notesInput.value
     }
 
-    
-
-
-    console.log(quoteBod)
+    // console.log(quoteBod)
 
     axios.post('http://localhost:6500/schedule', quoteBod)
     .then(res => {

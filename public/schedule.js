@@ -1,6 +1,22 @@
+// Get request 
 let viewQuotesForm = document.getElementById('view-quotes-form')
 let quotesDiv = document.getElementById('my-quotes-container')
 let quotePhone = document.getElementById('view-quotes-phone')
+
+//Post Request
+let scheduleForm = document.getElementById("schedule-quote")
+let firstNameInput = document.getElementById("first-name")
+let lastNameInput = document.getElementById("last-name")
+let phoneInput = document.getElementById("phone")
+let emailInput = document.getElementById("email")
+let dateInput = document.getElementById("date")
+let timeInput = document.getElementById("time")
+let addressInput = document.getElementById("address")
+let cityInput = document.getElementById("service-type")
+let stateInput = document.getElementById("city")
+let serviceInput = document.getElementById("state")
+let notesInput = document.getElementById("notes")
+// let scheduleForm = document.getElementById()
 
 
 
@@ -48,4 +64,26 @@ viewQuotesForm.addEventListener('submit', (event) => {
                 individualQuote.appendChild(quoteService)
             }                   
     }).catch((err)=> console.log(`something bad happened with the backend`, err))
+})
+
+scheduleForm.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    let quoteBod = {
+        firstName: firstNameInput.value,
+        lastName: lastNameInput.value,
+        phone: phoneInput.value,
+        email: emailInput.value,
+        service: serviceInput.value,
+        date: dateInput.value,
+        time: timeInput.value,
+        address: addressInput.value,
+        city: cityInput.value,
+        state: stateInput.value,
+        notes: notesInput.value
+    }
+    
+    axios.post('http://localhost:6500/schedule', quoteBod)
+    .then(res => console.log("Quote succesfully submitted"))
+    .catch(err => console.log("something went wrong with the post", err))
 })

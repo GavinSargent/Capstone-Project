@@ -10,7 +10,9 @@ app.use(cors())
 const {SERVER_PORT} = process.env
 const {seed} = require('./seed.js')
 const{
-    getMyQuotes
+    getMyQuotes,
+    scheduleQuote,
+    
 } = require('./controller')
 
 // Dev
@@ -18,7 +20,7 @@ app.post(`/seed`, seed)
 
 // User
 app.get(`/quotes/:quotePhone`, getMyQuotes)
-
+app.post('/schedule', scheduleQuote)
 
 
 

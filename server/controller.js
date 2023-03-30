@@ -26,4 +26,39 @@ module.exports = {
         .catch(err => console.log("something went wrong with the database", err))
     },
 
+    scheduleQuote: (req, res) => {
+        let {firstName, lastName, phone, 
+            email, service, date, time, 
+            address, city, state, notes} = req.body
+
+        sequelize.query(`
+            WITH newuser AS (INSERT INTO users (first_name, last_name, phone, email)
+            VALUES (:first_name, :last_name, :phone, :email)
+            RETURNING user_id)
+
+            INSERT INTO quotes (user_id, service, date, time, address, city, state, notes)
+            SELECT user_id, :service, :date, :time, :address, :city, :state, :notes FROM newuser; 
+        `,
+            {
+                replacements: {
+                    first_name: firstName,
+                    last_name: lastName,
+                    phone: phone,
+                    email: email,
+                    service: service,
+                    date: date,
+                    time: time,
+                    address: address,
+                    city: city,
+                    state: state,
+                    notes: notes
+                }
+            }
+        )
+        .then((dbRes) => {
+            res.status(200).send(dbRes)
+        })
+        .catch(err => console.log("something went wrong with the DB", err))
+    },
+
 }

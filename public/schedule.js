@@ -1,16 +1,16 @@
-const viewQuotesForm = document.getElementById('view-quotes-btn')
+const viewQuotesForm = document.getElementById('view-quotes-form')
 const quotesDiv = document.getElementById('my-quotes')
 const quotePhone = document.getElementById('view-quotes-phone')
 
 
 
-function getQuotes(event){
-    event.preventDefault()
+function getQuotes(e){
+    
 
-    console.log("THIS IS THE QUOTE PHONE", quotePhone)
     axios.get(`http://localhost:6500/quotes/${quotePhone}`)
-    .then(res => { console.log(res.data)})
-       /* for (let i = 0; i < res.data.length; i++) {
+    .then(res => { 
+        console.log(res.data)
+        for (let i = 0; i < res.data.length; i++) {
             const { quote_id, phone, date, time, service } = res.data
             const quoteElem = 
             `<div id="quote-${quote_id}">
@@ -22,10 +22,10 @@ function getQuotes(event){
 
             quotesDiv.innerHTML += quoteElem    
         }       
-    })*/.catch((err)=> console.log("something bad happened with the backend", err))
+    }).catch((err)=> console.log(`something bad happened with the backend`, err))
 }
 
 
 
 
-viewQuotesForm.addEventListener("submit", getQuotes)
+viewQuotesForm.addEventListener("submit", getQuotes())

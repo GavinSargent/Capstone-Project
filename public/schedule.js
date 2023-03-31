@@ -62,10 +62,6 @@ viewQuotesForm.addEventListener('submit', (event) => {
                 let quoteService = document.createElement('p')
 
                 deleteBtn.classList.add(quoteObj.quoteId)
-                // quotePhone.classList.add(quoteObj.quoteId)
-                // quoteDate.classList.add(quoteObj.quoteId)
-                // quoteTime.classList.add(quoteObj.quoteId)
-                // quoteService.classList.add(quoteObj.quoteId)
 
                 deleteBtn.innerHTML = "Cancel Quote"
                 quotePhone.innerHTML = "Phone: " + quoteObj.phone
@@ -86,19 +82,12 @@ viewQuotesForm.addEventListener('submit', (event) => {
                     event.target.parentElement.remove()
 
                     axios.delete('http://localhost:6500/quotes/delete/' + targetId)
-                    .then(() => {
-                        let postMsg = document.createElement('h3')
-
-                        postMsg.innerHTML = "Quote successfully cancelled!"
-
-                        goodPost.appendChild(postMsg)
-                    })
+                    .then(makeMsg("Quote successfully deleted!"))
                     .catch(err => console.log("Something happened on the backend", err))
                 })
             }                   
     }).catch((err)=> console.log(`something bad happened with the backend`, err))
 })
-
 
 scheduleForm.addEventListener("submit", (event) => {
     event.preventDefault()
@@ -122,12 +111,21 @@ scheduleForm.addEventListener("submit", (event) => {
     // console.log(quoteBod)
 
     axios.post('http://localhost:6500/schedule', quoteBod)
-    .then(res => {
-        let postMsg = document.createElement('h3')
-
-        postMsg.innerHTML = "Quote successfully submitted!"
-
-        goodPost.appendChild(postMsg)
-    })
+    .then(makeMsg("Quote scheduled successfully!"))
     .catch(err => console.log("something went wrong with the post", err))
 })
+
+
+function makeMsg (msg){
+    let postMsg = document.createElement('h3')
+
+    // postMsg.show()
+
+    postMsg.innerHTML = msg
+
+    goodPost.appendChild(postMsg)
+
+    // setTimeout(() => {
+    //     postMsg.hide()
+    // }, 5000)
+}

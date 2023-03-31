@@ -13,8 +13,8 @@
         <a href="main.html">Home</a>
     </header>
     
-    <section>
-        <h3>View Quotes</h3>
+    <section class="form">
+        <h3 class="form-title">View Quotes</h3>
         <form id="view-quotes-form">
             <label for="view-quotes-phone">Enter your phone number to view your quotes</label>
             <input type="tel" id="view-quotes-phone" name="view-quotes-phone" placeholder="Phone Number"
@@ -27,8 +27,8 @@
         <div id="my-quotes-container" name="my-quotes-container"></div>
     </section>
 
-    <section>
-        <h3>Schedule a Quote</h3>
+    <section class="form">
+        <h3 class="form-title">Schedule a Quote</h3>
 
         <div id="good-post" name="good-post"></div>
 
@@ -95,20 +95,6 @@
         <p id="required-fields">fields with * are required</p>
     </section>
 
-    <section>
-        <h3>Delete a Quote</h3>
-        <form id="delete-quotes-form">
-            <label for="delete-quotes-phone">Enter your phone number to view your quotes</label>
-            <input type="tel" id="delete-quotes-phone" name="delete-quotes-phone" placeholder="Phone Number"
-                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-                required>
-                <small>Format: 1110002222 (no spaces or dashes)</small>
-            <button id="view-delete-quotes-btn" name="view-delete-quotes-btn">View my quotes</button>
-        </form>
-
-        <div id="delete-my-quotes-container" name="delete-my-quotes-container"></div>
-    </section>
-    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="schedule.js"></script>
 </body>

@@ -119,7 +119,7 @@ scheduleForm.addEventListener("submit", (event) => {
 function makeMsg (msg){
     let postMsg = document.createElement('h3')
 
-    // postMsg.show()
+    // postMsg.setAttribute("visibility", "visible")
 
     postMsg.innerHTML = msg
 

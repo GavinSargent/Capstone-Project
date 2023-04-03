@@ -4,7 +4,20 @@ body{
 }
 
 .button{
-    
+    margin: 5px;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 10px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: #387356
+}
+
+.button:hover{
+    background-color: #359434;
 }
 
 .form{
@@ -15,33 +28,68 @@ body{
     border-color: #A3B18A;
     align-content: center;
     justify-content: center;
+    color: #A3B18A;
 
 } 
 
-.forms{
-    
-}
-
 .form-title{
-    margin-top: px;
+    margin: 10px;
+    padding: 5px;
+    color: #38b328;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0) ;
 }
 
 header{
-    background-color: #588157;
-    width: 100vw;
-    height: 15vh;
+    background-color: #bc8f2f;
+    width: 100%;
 } 
 
-.input-box{
 
+
+.input-box{
+    border-radius: 10px;
 }
 
 .input-section{
     margin: 5px;
 }
 
+.link{
+    align-self: center;
+    font-family: 'Lilita One', cursive;
+    color:rgb(32, 140, 93);
+    text-shadow: none;
+    font-size: 20px;
+}
+
+#my-quotes-container{
+    align-self: center;
+}
+
+.page-header{
+    display: flex; 
+    align-content: space-between;
+    justify-content: space-around;
+    font-family: 'Kanit', sans-serif;
+    color: gold;
+    text-shadow: 2px 2px 2px rgb(255, 136, 0);
+    border-style: outset;
+} 
+
+.page-title{
+    align-self: center;
+    font-size: 50px;
+}
+
 #required-fields{
     color: #DAD7CD;
 }
 
+#sunset-image{
+    width: 20vw;
+    height: fit-content
+}
 
+#time{
+    width: 75px;
+}

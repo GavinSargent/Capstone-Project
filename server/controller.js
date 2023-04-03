@@ -32,7 +32,7 @@ module.exports = {
             address, city, state, notes} = req.body
 
         console.log(req.body)
-
+        if(checkPhone() === true)
         sequelize.query(`
             WITH newuser AS (INSERT INTO users (first_name, last_name, phone, email)
             VALUES (:first_name, :last_name, :phone, :email)

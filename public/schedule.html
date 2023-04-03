@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Quote</h1>
-        <a href="main.html">Home</a>
+    <header class="page-header">
+        <img src="../extra_documentation/pexels-harry-cooke-6195050.jpg" id="sunset-image">
+        <h1 class="page-title">Quotes</h1>
+        <a href="main.html" class="link">Home</a>
     </header>
 
     <div class="forms">
@@ -60,14 +61,14 @@
                     <label for="date"></label>
                     <input type="date" id="date" name="date" class="input-box" required>
                     <label for="time"></label>
-                    <input type="time" id="time" name ="time" min="16:00" max="22:00" value="16:00" required>
+                    <input type="time" id="time" name ="time" min="16:00" max="22:00" value="16:00" class="input-box" required>
                 </div>
 
                 <div id="address-section" class="input-section">
                     <label for="address">Address*</label>
-                    <input type="text" id="address" name="address" placeholder="Address" required>
+                    <input type="text" id="address" name="address" class="input-box" placeholder="Address" required>
                     <label for="city">City*</label>
-                    <input type="text" id="city" name="city" placeholder="City">
+                    <input type="text" id="city" name="city" class="input-box" placeholder="City">
                     <label for="state">State*</label>
                     <input type="text" id="state" name="state" class="input-box" placeholder="State">
                 </div>

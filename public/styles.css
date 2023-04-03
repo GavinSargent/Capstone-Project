@@ -1,12 +1,47 @@
 body{
-    background-color: #588157;
+    background-color: #344E41;
+    
+}
+
+.button{
+    
 }
 
 .form{
+    display: flex;
     background-color: #3A5A40;
-    margin-top: 12 px;
+    margin-top: 30px;
+    border-style: outset; 
+    border-color: #A3B18A;
+    align-content: center;
+    justify-content: center;
+
+} 
+
+.forms{
+    
 }
 
 .form-title{
     margin-top: px;
 }
+
+header{
+    background-color: #588157;
+    width: 100vw;
+    height: 15vh;
+} 
+
+.input-box{
+
+}
+
+.input-section{
+    margin: 5px;
+}
+
+#required-fields{
+    color: #DAD7CD;
+}
+
+

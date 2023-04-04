@@ -32,7 +32,6 @@ viewQuotesForm.addEventListener('submit', (event) => {
     
     axios.get("http://localhost:6500/quotes/" + actQuotePhone)
     .then(res => { 
-        // console.log(res.data)
             quotesDiv.innerHTML = ''
         
             if (res.data.length === 0) {
@@ -119,13 +118,8 @@ scheduleForm.addEventListener("submit", (event) => {
 function makeMsg (msg){
     let postMsg = document.createElement('h3')
 
-    // postMsg.setAttribute("visibility", "visible")
-
     postMsg.innerHTML = msg
 
     goodPost.appendChild(postMsg)
 
-    // setTimeout(() => {
-    //     postMsg.hide()
-    // }, 5000)
 }

@@ -15,7 +15,6 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 module.exports = {
     getMyQuotes: (req, res) => {
         const {quotePhone} = req.params
-        // console.log("THIS IS THE PHONE ", quotePhone)
         sequelize.query(`
             SELECT quotes.quote_id, users.phone, quotes.date, quotes.time, quotes.service
             FROM quotes
